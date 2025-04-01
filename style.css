@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  line-height: 1.4;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 50;
+  padding: 0 16px;
+}
+
+.header-container {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Search Bar */
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width: 640px;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #606060;
+}
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 4px 0 40px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  font-size: 16px;
+  background: #f8f8f8;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1f1f1f;
+  background: white;
+}
+
+/* Main Content Styles */
+.main-content {
+ padding: 84px 10vw 0; /* Increased left and right padding */
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 40px 16px;
+}
+
+/* Video Card Styles */
+.video-preview {
+  cursor: pointer;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.thumbnail-container::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.video-preview:hover .thumbnail {
+  transform: scale(1.05);
+}
+
+.video-info {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.channel-picture {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.video-details {
+  min-width: 0;
+}
+
+.video-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 4px;
+  color: #0f0f0f;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.channel-name {
+  font-size: 12px;
+  color: #606060;
+  margin-bottom: 2px;
+}
+
+.video-stats {
+  font-size: 12px;
+  color: #606060;
+  display: flex;
+  align-items: center;
+}
+
+.video-stats::before {
+  content: "•";
+  margin: 0 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 80px 4vw 0;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 76px 3vw 0;
+  }
+
+  .video-grid {
+    gap: 24px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 10px;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .video-title {
+    font-size: 12px;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px 8px;
+  }
+}
+/* Fix padding to expand content */
+.main-content {
+    padding: 84px 5vw 0; /* Reduced left and right padding */
+    max-width: 1600px;  /* Increased width to allow more space */
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Adjust the video grid to fill space */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Increased min size */
+    gap: 24px 16px; /* Proper spacing */
+    justify-content: center; /* Ensures it fills available space */
+  }
+  
+  /* Ensure video previews are properly sized */
+  .video-preview {
+    width: 100%;
+    max-width: 360px; /* Prevents excessive shrinking */
+  }
+  
+  /* Responsive Fixes */
+  @media (max-width: 0px) {
+    .main-content {
+      padding: 80px 4vw 0;
+    }
+  
+    .video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .main-content {
+      padding: 76px 3vw 0;
+    }
+  
+    .video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px 8px;
+    }
+  }
+  
